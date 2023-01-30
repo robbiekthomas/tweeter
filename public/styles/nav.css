@@ -1,0 +1,34 @@
+h4 {
+  margin: 0;
+}
+
+nav {
+  height: 120px;
+  width: 100vw;
+  background-color: #4056a1;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5em;
+  position: fixed;
+}
+
+nav > span {
+  font-family: "Bungee", cursive;
+}
+
+.notBold {
+  font-weight: 300;
+}
+
+.newTweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-angles-down {
+  color: red;
+}
