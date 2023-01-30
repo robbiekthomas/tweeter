@@ -1,6 +1,8 @@
 .new-tweet {
   width: 50%;
   margin: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
 }
 
 .under-submit {
@@ -28,5 +30,8 @@
   padding: 0.2em 0.3em ;
 }
 
+.redColor {
+  color: red;
+}
 
 
