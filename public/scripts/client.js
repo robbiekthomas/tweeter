@@ -49,16 +49,16 @@ $(document).ready(function () {
 $(function () {
   $("#submit-tweet").submit(function (event) {
     const queryString = $(this).serialize();
-    const inputLength = $('#tweet-text').val().length;
+    const inputLength = $("#tweet-text").val().length;
     event.preventDefault();
     if (inputLength === 0) {
-      $('#error-short').slideDown();
-      $('#error-long').slideUp();
+      $("#error-short").slideDown();
+      $("#error-long").slideUp();
       return;
     }
     if (inputLength > 140) {
-      $('#error-long').slideDown();
-      $('#error-short').slideUp();
+      $("#error-long").slideDown();
+      $("#error-short").slideUp();
       return;
     }
     $.post("/tweets", queryString).done(function () {
@@ -67,13 +67,37 @@ $(function () {
       });
     });
     $("form :input").val("");
-    $('#error-long').slideUp();
-    $('#error-short').slideUp();
+    $("#error-long").slideUp();
+    $("#error-short").slideUp();
   });
 });
 
 $(function () {
-  $("#new-tweet-icon").click(function() {
+  $("#new-tweet-icon").click(function () {
     $("#submit-tweet").slideToggle();
+  });
+});
+
+$(function () {
+  $(".scroll-up").click(function () {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $("#submit-tweet").slideDown();
+  });
+});
+
+$(function() {
+  $(window).scroll(function () {
+    if($(window).scrollTop() > 400) {
+      $('.newTweet').slideUp();
+      $(".scroll-up").slideDown();
+      $(".title").addClass('title-dark')
+      $(".title").removeClass('title-light')
+    }
+    if($(window).scrollTop() <= 400) {
+      $('.newTweet').slideDown();
+      $(".scroll-up").slideUp();
+      $(".title").removeClass('title-dark')
+      $(".title").addClass('title-light')
+    }
   })
 })

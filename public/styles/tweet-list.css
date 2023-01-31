@@ -75,3 +75,12 @@
 .hidden {
   display: none;
 }
+
+.scroll-up {
+  color: red;
+  position: fixed;
+  bottom: 2vw;
+  right: 25vw;
+  font-size: 70px;
+  cursor: pointer;
+}
