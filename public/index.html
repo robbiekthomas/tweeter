@@ -69,6 +69,10 @@
     </header>
     <main class="tweet-container">
       <section class="tweet-create">
+        <article class="error hidden" id="error-long">
+          ⛔ Too Long. Please shorten your tweet to under 140 characters. ⛔
+        </article>
+        <article class="error hidden" id="error-short">⛔ Tweet cannot be blank. ⛔</article>
         <form action="/tweets/" method="POST" id="submit-tweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
@@ -77,6 +81,7 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+
         <article id="tweets-container"></article>
       </section>
     </main>

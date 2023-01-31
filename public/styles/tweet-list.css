@@ -37,6 +37,7 @@
 .tweet-content {
   font-size: 20px;
   margin: 20px;
+  word-break: break-all;
 }
 .tweet-footer {
   display: flex;
@@ -62,4 +63,15 @@
 
 .icon:hover {
   color: rgb(209, 133, 46);
+}
+
+.error {
+  border: 3px solid red;
+  color: red;
+  padding: 5px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }

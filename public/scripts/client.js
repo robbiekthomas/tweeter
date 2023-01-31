@@ -1,3 +1,9 @@
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function (data) {
   const $tweet = $(`
   <article class="tweet-item">
@@ -9,7 +15,7 @@ const createTweetElement = function (data) {
     <h5 class="tag-name">${data.user.handle}</h5>
   </header>
   <p class="tweet-content">
-  ${data.content.text}
+  ${escape(data.content.text)}
   </p>
   <footer class="tweet-footer">
     <p class="tweet-time">${timeago.format(data.created_at)}</p>
@@ -45,11 +51,11 @@ $(function () {
     const queryString = $(this).serialize();
     event.preventDefault();
     if (queryString.length <= 5) {
-      alert("You need to input text for your tweet");
+      $('#error-short').slideDown();
       return;
     }
     if (queryString.length >= 145) {
-      alert("Your tweet is too long");
+      $('#error-long').slideDown();
       return;
     }
     $.post("/tweets", queryString).done(function () {
@@ -58,5 +64,7 @@ $(function () {
       });
     });
     $("form :input").val("");
+    $('#error-long').slideUp();
+    $('#error-short').slideUp();
   });
 });
