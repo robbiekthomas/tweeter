@@ -1,34 +1,3 @@
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
-const renderTweets = function (data) {
-  for (const tweet of data) {
-    createTweetElement(tweet);
-  }
-};
-
 const createTweetElement = function (data) {
   const $tweet = $(`
   <article class="tweet-item">
@@ -43,7 +12,7 @@ const createTweetElement = function (data) {
   ${data.content.text}
   </p>
   <footer class="tweet-footer">
-    <p class="tweet-time">${data.created_at}</p>
+    <p class="tweet-time">${timeago.format(data.created_at)}</p>
     <div class="icon-list">
       <i class="fa-solid fa-flag icon"></i>
       <i class="fa-solid fa-retweet icon"></i>
@@ -52,9 +21,38 @@ const createTweetElement = function (data) {
   </footer>
 </article>>
   `);
-  $("#tweets-container").append($tweet[0]);
+  $("#tweets-container").prepend($tweet[0]);
+};
+
+const renderTweets = function (data) {
+  for (const tweet of data) {
+    createTweetElement(tweet);
+  }
+};
+
+const loadtweets = function () {
+  $.get("/tweets", function (data) {
+    renderTweets(data);
+  });
 };
 
 $(document).ready(function () {
-  renderTweets(data);
+  loadtweets();
+});
+
+$(function () {
+  $("#submit-tweet").submit(function (event) {
+    const queryString = $(this).serialize();
+    event.preventDefault();
+    if (queryString.length <= 5) {
+      alert("You need to input text for your tweet");
+      return;
+    }
+    if (queryString.length >= 145) {
+      alert("Your tweet is too long");
+      return;
+    }
+    $.post("/tweets", queryString).done(loadtweets);
+    $('form :input').val('');
+  });
 });

@@ -5,7 +5,7 @@
   width: 90%;
 }
 .tweet-item:hover {
-box-shadow: 4px 4px 4px rgb(176, 176, 210);
+  box-shadow: 4px 4px 4px rgb(176, 176, 210);
 }
 
 .tweet-header {
@@ -43,7 +43,6 @@ box-shadow: 4px 4px 4px rgb(176, 176, 210);
   justify-content: space-between;
   align-items: center;
   border-top: 3px solid #545149;
-  
 }
 
 .tweet-time {
@@ -52,9 +51,9 @@ box-shadow: 4px 4px 4px rgb(176, 176, 210);
 }
 
 .icon-list {
- font-size: 16px; 
- margin: 10px 10px;
- color: #4056a1;
+  font-size: 16px;
+  margin: 10px 10px;
+  color: #4056a1;
 }
 
 .icon {
