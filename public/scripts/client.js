@@ -52,7 +52,11 @@ $(function () {
       alert("Your tweet is too long");
       return;
     }
-    $.post("/tweets", queryString).done(loadtweets);
-    $('form :input').val('');
+    $.post("/tweets", queryString).done(function () {
+      $.get("/tweets", function (data) {
+        createTweetElement(data[data.length - 1]);
+      });
+    });
+    $("form :input").val("");
   });
 });
