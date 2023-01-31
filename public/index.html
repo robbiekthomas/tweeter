@@ -54,7 +54,7 @@
         <h4 class="writeHeader">
           Write <span class="notBold">a new tweet</span>
         </h4>
-        <i class="fa-sharp fa-solid fa-angles-down"></i>
+        <i class="fa-sharp fa-solid fa-angles-down" id="new-tweet-icon"></i>
       </div>
     </nav>
     <!-- Page-specific (main) content here -->
@@ -72,8 +72,10 @@
         <article class="error hidden" id="error-long">
           ⛔ Too Long. Please shorten your tweet to under 140 characters. ⛔
         </article>
-        <article class="error hidden" id="error-short">⛔ Tweet cannot be blank. ⛔</article>
-        <form action="/tweets/" method="POST" id="submit-tweet">
+        <article class="error hidden" id="error-short">
+          ⛔ Tweet cannot be blank. ⛔
+        </article>
+        <form action="/tweets/" method="POST" class="hidden" id="submit-tweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="under-submit">

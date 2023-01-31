@@ -1,4 +1,4 @@
-const escape = function (str) {
+const preventEscape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -15,7 +15,7 @@ const createTweetElement = function (data) {
     <h5 class="tag-name">${data.user.handle}</h5>
   </header>
   <p class="tweet-content">
-  ${escape(data.content.text)}
+  ${preventEscape(data.content.text)}
   </p>
   <footer class="tweet-footer">
     <p class="tweet-time">${timeago.format(data.created_at)}</p>
@@ -49,13 +49,16 @@ $(document).ready(function () {
 $(function () {
   $("#submit-tweet").submit(function (event) {
     const queryString = $(this).serialize();
+    const inputLength = $('#tweet-text').val().length;
     event.preventDefault();
-    if (queryString.length <= 5) {
+    if (inputLength === 0) {
       $('#error-short').slideDown();
+      $('#error-long').slideUp();
       return;
     }
-    if (queryString.length >= 145) {
+    if (inputLength > 140) {
       $('#error-long').slideDown();
+      $('#error-short').slideUp();
       return;
     }
     $.post("/tweets", queryString).done(function () {
@@ -68,3 +71,9 @@ $(function () {
     $('#error-short').slideUp();
   });
 });
+
+$(function () {
+  $("#new-tweet-icon").click(function() {
+    $("#submit-tweet").slideToggle();
+  })
+})
