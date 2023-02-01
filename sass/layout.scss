@@ -3,10 +3,14 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+$accent-color: #545149;
+$background-color: #f4f1ec;
+$nav-color: #4056a1;
+$primary-font-stack: "Source Sans Pro", sans-serif;
+
 html {
   box-sizing: border-box;
 }
-
 *,
 *:before,
 *:after {
@@ -16,25 +20,26 @@ html {
 /*
  * Global layout stuff
  */
+
 body {
-  color: #545149;
-  background-color: #f4f1ec;
+  color: $accent-color;
+  background-color: $background-color;
   font-size: 24px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: $primary-font-stack;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
 main {
   width: 90%;
-  background-color: #f4f1ec;
+  background-color: $background-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 .content {
   display: flex;
   flex-direction: column;
@@ -47,16 +52,21 @@ main {
     flex-direction: row;
     align-items: flex-start;
   }
+
   nav {
-    background-color: #4056a1;
+    background-color: $nav-color;
   }
+
   .profile {
     margin: 160px 120px 360px;
+   
   }
   .tweet-container {
     width: 150vw;
   }
+
   .tweet-container {
     padding-top: 120px;
   }
+  
 }

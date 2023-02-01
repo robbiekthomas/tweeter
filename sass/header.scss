@@ -1,15 +1,15 @@
+@import './mixins.scss';
+
+$header-color: #6ecdbd;
+
 .profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include align-vertically;
   padding-top: 120px;
   height: 520px;
   width: 100%;
   background-image: url("../images/cartographer.png");
-  background-color: #6ecdbd;
+  background-color: $header-color;
 }
-
 .username {
   color: white;
 }

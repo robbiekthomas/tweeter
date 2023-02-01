@@ -1,3 +1,8 @@
+@import './mixins.scss';
+
+$primary-text-color: #ffffff;
+$accent-font-stack: "Bungee", cursive;
+
 .writeHeader {
   margin: 0;
 }
@@ -5,20 +10,21 @@
 nav {
   height: 120px;
   width: 100vw;
-  color: #ffffff;
+  color: $primary-text-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5em;
   position: fixed;
   top: 0;
-}
-nav h1 {
-  font-size: 32px;
-  font-family: "Bungee", cursive;
-}
-nav span {
-  font-weight: 300;
+
+  h1 {
+    font-size: 32px;
+    font-family: $accent-font-stack;
+  }
+  span {
+    font-weight: 300;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -27,15 +33,13 @@ nav span {
     transition: color 1s ease;
   }
   .title-light {
-    color: #ffffff;
+    color: $primary-text-color;
     transition: color 1s ease;
   }
 }
+
 .newTweet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+ @include align-vertically;
 }
 
 .fa-angles-down {
@@ -48,7 +52,10 @@ nav span {
 }
 
 @keyframes bounce {
-  0%, 20%, 60%, 100% {
+  0%,
+  20%,
+  60%,
+  100% {
     transform: translateY(0);
   }
   20% {

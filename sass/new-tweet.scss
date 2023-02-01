@@ -1,33 +1,37 @@
+$accent-font-stack: "Bungee", cursive;
+$primary-font-stack: "Source Sans Pro", sans-serif;
+$accent-color: #545149;
+$nav-color: #4056a1;
+
 .tweet-container {
   margin: 20px;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
+  
 }
-
 .tweet-create {
   width: 100%;
 }
-
 .under-submit {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Bungee", cursive;
+  font-family: $accent-font-stack
 }
 
 #tweet-text {
   width: 100%;
   border: none;
-  border-bottom: 5px solid #545149;
-  color: #545149;
-  font-family: "Source Sans Pro", sans-serif;
+  border-bottom: 5px solid $accent-color;
+  color: $accent-color;
+  font-family: $primary-font-stack;
   font-weight: 600;
   resize: none;
   padding: 5px;
 }
 
 .tweet-container button {
-  background-color: #4056a1;
+  background-color: $nav-color;
   color: white;
   border: none;
   padding: 0.2em 0.3em;
