@@ -44,6 +44,10 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script
+      type="text/javascript"
+      src="/scripts/composer-char-counter.js"
+    ></script>
   </head>
 
   <body>
@@ -58,38 +62,43 @@
       </div>
     </nav>
     <!-- Page-specific (main) content here -->
-    <header class="profile">
-      <div>
-        <img src="/images/profile-hex.png" />
-      </div>
-      <br />
-      <div>
-        <h2 class="username">Robbie <span class="notBold">Thomas</span></h2>
-      </div>
-    </header>
-    <main class="tweet-container">
-      <section class="tweet-create">
-        <article class="error hidden" id="error-long">
-          ⛔ Too Long. Please shorten your tweet to under 140 characters. ⛔
-        </article>
-        <article class="error hidden" id="error-short">
-          ⛔ Tweet cannot be blank. ⛔
-        </article>
-        <form action="/tweets/" method="POST" class="hidden" id="submit-tweet">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="under-submit">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-        <article id="tweets-container"></article>
-      </section>
-      <i class="fa-solid fa-circle-chevron-up scroll-up hidden"></i>
-    </main>
+    <div class="content">
+      <header class="profile">
+        <div>
+          <img src="/images/profile-hex.png" />
+        </div>
+        <br />
+        <div>
+          <h2 class="username">Robbie <span class="notBold">Thomas</span></h2>
+        </div>
+      </header>
+      <main class="tweet-container">
+        <section class="tweet-create">
+          <article class="error hidden" id="error-long">
+            ⛔ Too Long. Please shorten your tweet to under 140 characters. ⛔
+          </article>
+          <article class="error hidden" id="error-short">
+            ⛔ Tweet cannot be blank. ⛔
+          </article>
+          <form
+            action="/tweets/"
+            method="POST"
+            class="hidden"
+            id="submit-tweet"
+          >
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <div class="under-submit">
+              <button type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text"
+                >140</output
+              >
+            </div>
+          </form>
+          <article id="tweets-container"></article>
+        </section>
+        <i class="fa-solid fa-circle-chevron-up scroll-up hidden"></i>
+      </main>
+    </div>
   </body>
-  <script
-    type="text/javascript"
-    src="/scripts/composer-char-counter.js"
-  ></script>
 </html>

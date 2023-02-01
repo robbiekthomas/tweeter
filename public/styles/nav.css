@@ -5,7 +5,6 @@
 nav {
   height: 120px;
   width: 100vw;
-  /* background-color: #4056a1; */
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -17,13 +16,16 @@ nav {
 .title {
   font-size: 32px;
 }
-.title-dark {
-  color: rgb(67, 67, 67);
-  transition: color 1s ease;
-}
-.title-light {
-  color: #ffffff;
-  transition: color 1s ease;
+
+@media only screen and (max-width: 1024px) {
+  .title-dark {
+    color: rgb(67, 67, 67);
+    transition: color 1s ease;
+  }
+  .title-light {
+    color: #ffffff;
+    transition: color 1s ease;
+  }
 }
 
 nav > span {

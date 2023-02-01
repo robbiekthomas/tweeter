@@ -1,8 +1,7 @@
 .tweet-item {
   border: 3px solid #545149;
-  margin: 1em;
+  margin: 1em 0em;
   padding: 5px;
-  width: 90%;
 }
 .tweet-item:hover {
   box-shadow: 4px 4px 4px rgb(176, 176, 210);
@@ -80,7 +79,7 @@
   color: red;
   position: fixed;
   bottom: 2vw;
-  right: 25vw;
+  right: 2vw;
   font-size: 70px;
   cursor: pointer;
 }

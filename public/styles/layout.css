@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -18,10 +20,7 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /*
@@ -36,5 +35,33 @@ main {
   justify-content: center;
   align-items: center;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
 
- 
+@media only screen and (min-width: 1024px) {
+  .content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  nav {
+    background-color: #4056a1;
+  }
+
+  .profile {
+    margin: 160px 120px 360px;
+   
+  }
+  .tweet-container {
+    width: 150vw;
+  }
+
+  .tweet-container {
+    padding-top: 120px;
+  }
+  
+}

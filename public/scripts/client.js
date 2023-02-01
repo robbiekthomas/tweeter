@@ -1,9 +1,11 @@
+// Prevents XSS Attacks
 const preventEscape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+// HTML for single Tweet
 const createTweetElement = function (data) {
   const $tweet = $(`
   <article class="tweet-item">
@@ -27,25 +29,33 @@ const createTweetElement = function (data) {
   </footer>
 </article>>
   `);
+
   $("#tweets-container").prepend($tweet[0]);
 };
 
+// Renders all tweets
 const renderTweets = function (data) {
   for (const tweet of data) {
     createTweetElement(tweet);
   }
 };
 
+// Loads tweets from database
 const loadtweets = function () {
+
   $.get("/tweets", function (data) {
     renderTweets(data);
   });
+
 };
 
+
+// Start up of website
 $(document).ready(function () {
   loadtweets();
 });
 
+// New Tweet submit button will load new tweet in or give error if requirements aren't met
 $(function () {
   $("#submit-tweet").submit(function (event) {
     const queryString = $(this).serialize();
@@ -72,12 +82,14 @@ $(function () {
   });
 });
 
+// New Tweet Button to show create tweet form
 $(function () {
   $("#new-tweet-icon").click(function () {
     $("#submit-tweet").slideToggle();
   });
 });
 
+// Scroll to top of padge button
 $(function () {
   $(".scroll-up").click(function () {
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -85,6 +97,7 @@ $(function () {
   });
 });
 
+// Show scroll to top of page when page is scrolled down
 $(function() {
   $(window).scroll(function () {
     if($(window).scrollTop() > 400) {
