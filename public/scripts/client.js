@@ -35,6 +35,7 @@ const createTweetElement = function (data) {
 
 // Renders all tweets
 const renderTweets = function (data) {
+  $("#tweets-container").empty();
   for (const tweet of data) {
     createTweetElement(tweet);
   }
@@ -42,21 +43,18 @@ const renderTweets = function (data) {
 
 // Loads tweets from database
 const loadtweets = function () {
-
   $.get("/tweets", function (data) {
     renderTweets(data);
   });
-
 };
-
 
 // Start up of website
 $(document).ready(function () {
   loadtweets();
 });
 
-// New Tweet submit button will load new tweet in or give error if requirements aren't met
 $(function () {
+  // New Tweet submit button will load new tweet in or give error if requirements aren't met
   $("#submit-tweet").submit(function (event) {
     const queryString = $(this).serialize();
     const inputLength = $("#tweet-text").val().length;
@@ -71,46 +69,45 @@ $(function () {
       $("#error-short").slideUp();
       return;
     }
-    $.post("/tweets", queryString).done(function () {
-      $.get("/tweets", function (data) {
-        createTweetElement(data[data.length - 1]);
+    $.post("/tweets", queryString)
+      .done(function () {
+        $.get("/tweets", function (data) {
+          createTweetElement(data[data.length - 1]);
+        });
+      })
+      .fail(function () {
+        alert("Server side error");
       });
-    });
+
     $("form :input").val("");
     $("#error-long").slideUp();
     $("#error-short").slideUp();
+    $(".counter")[0].value = 140;
   });
-});
 
-// New Tweet Button to show create tweet form
-$(function () {
+  // New Tweet Button to show create tweet form
   $("#new-tweet-icon").click(function () {
     $("#submit-tweet").slideToggle();
   });
-});
-
-// Scroll to top of padge button
-$(function () {
+  // Scroll to top of padge button
   $(".scroll-up").click(function () {
     $("html, body").animate({ scrollTop: 0 }, "slow");
     $("#submit-tweet").slideDown();
   });
-});
 
-// Show scroll to top of page when page is scrolled down
-$(function() {
+  // Show scroll to top of page when page is scrolled down
   $(window).scroll(function () {
-    if($(window).scrollTop() > 400) {
-      $('.newTweet').slideUp();
+    if ($(window).scrollTop() > 400) {
+      $(".newTweet").slideUp();
       $(".scroll-up").slideDown();
-      $(".title").addClass('title-dark')
-      $(".title").removeClass('title-light')
+      $(".title").addClass("title-dark");
+      $(".title").removeClass("title-light");
     }
-    if($(window).scrollTop() <= 400) {
-      $('.newTweet').slideDown();
+    if ($(window).scrollTop() <= 400) {
+      $(".newTweet").slideDown();
       $(".scroll-up").slideUp();
-      $(".title").removeClass('title-dark')
-      $(".title").addClass('title-light')
+      $(".title").removeClass("title-dark");
+      $(".title").addClass("title-light");
     }
-  })
-})
+  });
+});
